@@ -82,7 +82,7 @@ def evolutionary_algorithm(points, population_size=100, generations=1000, crosso
 
         # Reducing existing diversity so that new individuals emerge and diversity increases further
         if generation % 80 == 0:
-            population = population[:int(population_size * 0.2)]  # En iyi %80'ini koru
+            population = population[:int(population_size * 0.2)]  # Keep the best %80 
 
         # If distance does not change, increase stale_generations
         if distance == best_distance:
