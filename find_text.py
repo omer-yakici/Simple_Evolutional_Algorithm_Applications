@@ -37,7 +37,6 @@ def evolutionary_algorithm(target, population_size=100, generations=1000):
         new_population.append(best_fit)
         population = new_population
 
-# Your target text
 target_text = "Merhaba Dunya umarim bugun iyisindir"
 
 # Run evolutionary algorithm
