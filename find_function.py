@@ -1,15 +1,19 @@
 import random
-import math
 
-def generate_random_term():
-    return f"{random.choice(['x', 'y'])} ** {random.uniform(1, 3)}"
+def generate_random_term_x(): 
+    a= str(f"{random.choice(['x'])} ** {random.uniform(1, 3)}") 
+    return a 
+
+def generate_random_term_y():
+    b= str(f"{random.choice(['y'])} ** {random.uniform(1, 3)}")
+    return b
 
 def generate_random_function():
-    term1 = generate_random_term()
+    term1 = generate_random_term_x()
     operator = random.choice(['+', '-', '*', '**', 'math.sqrt'])
-    term2 = generate_random_term()
+    term2 =generate_random_term_y()
     constant = random.uniform(-10, 10)
-    return f"({term1}) {operator} ({term2}) + {constant}"
+    return f"{term1} {operator} {term2} {constant}"
 
 def evaluate_function(expr, x, y):
     try:
@@ -37,10 +41,10 @@ def mutate(individual, mutation_rate=0.1):
     for i in range(len(mutated_individual)):
         if random.random() < mutation_rate:
             mutation_point = random.randint(0, len(mutated_individual) - 1)
-            mutated_individual[mutation_point] = generate_random_term()
+            mutated_individual[mutation_point] = generate_random_function()
     return ''.join(mutated_individual)
 
-def evolutionary_algorithm(points, population_size=50, generations=10000, crossover_rate=0.8, mutation_rate=0.1, max_stale_generations=3, convergence_threshold=0.01, max_same_function_generations=5):
+def evolutionary_algorithm(points, population_size=50, generations=10000, crossover_rate=0.5, mutation_rate=0.2, max_stale_generations=3, convergence_threshold=0.01, max_same_function_generations=5):
     population = [generate_random_function() for _ in range(population_size)]
     stale_generations = 0
     same_function_generations = 0
