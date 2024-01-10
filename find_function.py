@@ -72,8 +72,8 @@ def evolutionary_algorithm(points, population_size=50, generations=10000, crosso
             same_function_generations += 1
         b=int((len(nufus)/2))
         for _ in range(population_size - 1):
-            parent1 = random.choice(population[:b])
-            parent2 = random.choice(population[:b])
+            parent1 = random.choice(population[b:])
+            parent2 = random.choice(population[b:])
 
             child = crossover(parent1, parent2)
             child = mutate(child, mutation_rate)
