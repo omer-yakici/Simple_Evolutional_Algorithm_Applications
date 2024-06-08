@@ -25,6 +25,7 @@ def evaluate_function(expr, x, y):
 
 def fitness(individual, points):
     errors = []
+    
     for x, y, expected_result in points:
         result = evaluate_function(individual, x, y)
         error = abs(result - expected_result)
@@ -32,13 +33,17 @@ def fitness(individual, points):
     return errors
 
 def crossover(parent1, parent2):
+    
     split_point = random.randint(0, min(len(parent1), len(parent2)) - 1)
     child = parent1[:split_point] + parent2[split_point:]
     return child
 
 def mutate(individual, mutation_rate=0.1):
+    
     mutated_individual = list(individual)
+    
     for i in range(len(mutated_individual)):
+        
         if random.random() < mutation_rate:
             mutation_point = random.randint(0, len(mutated_individual) - 1)
             mutated_individual[mutation_point] = generate_random_function()
