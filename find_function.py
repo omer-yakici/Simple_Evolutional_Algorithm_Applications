@@ -44,8 +44,14 @@ def mutate(individual, mutation_rate=0.1):
             mutated_individual[mutation_point] = generate_random_function()
     return ''.join(mutated_individual)
 
-def evolutionary_algorithm(points, population_size=50, generations=10000, crossover_rate=0.5, mutation_rate=0.2, 
-                           max_stale_generations=3, convergence_threshold=0.01, max_same_function_generations=5):
+def evolutionary_algorithm(points, population_size=50, 
+                           generations=10000, 
+                           crossover_rate=0.5, 
+                           mutation_rate=0.2, 
+                           max_stale_generations=3, 
+                           convergence_threshold=0.01, 
+                           max_same_function_generations=5):
+                               
     population = [generate_random_function() for _ in range(population_size)]
     stale_generations = 0
     same_function_generations = 0
